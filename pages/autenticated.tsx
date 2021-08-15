@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => { {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const authenticated = (context?.req?.url?.lastIndexOf("auth=true") || -1) >= 0;
   
   if(!authenticated) {
