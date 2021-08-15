@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage, NextPageContext } from 'next'
 
 const Home: NextPage = () => {
   return (
@@ -8,8 +8,8 @@ const Home: NextPage = () => {
   )
 }
 
-export async function getServerSideProps(context) {
-  const authenticated = context.req.url.lastIndexOf("auth=true") >= 0;
+export const getServerSideProps: GetServerSideProps = async (context) => { {
+  const authenticated = (context?.req?.url?.lastIndexOf("auth=true") || -1) >= 0;
   
   if(!authenticated) {
     return {
